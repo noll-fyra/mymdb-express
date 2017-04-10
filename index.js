@@ -10,6 +10,13 @@ mongoose.connect(dbURI, function () {
   console.log('db is connected')
 })
 
+// check if our connection is okay
+var db = mongoose.connection
+db.on('error', console.error.bind(console, 'connection error'))
+db.once('open', function () {
+  console.log('really, really connected')
+})
+
 // setup body parser
 var bodyParser = require('body-parser')
 app.use(bodyParser.json())
