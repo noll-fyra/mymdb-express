@@ -7,8 +7,8 @@ var userSchema = new mongoose.Schema({
     required: [true, 'User name cannot be empty'],
     minlength: [3, 'User name too short']
   },
-  synopsis: String,
-  rating: Number
+  email: String,
+  password: String
 })
 
 // setting up models
