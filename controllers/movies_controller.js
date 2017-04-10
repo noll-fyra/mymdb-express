@@ -20,4 +20,9 @@ router.route('/movies')
   })
 })
 
+router.route('/movies/:id')
+.get(function (req, res) {
+  res.send('indiviudal movie details on id: ' + req.params.id)
+})
+
 module.exports = router
