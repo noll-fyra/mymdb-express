@@ -15,6 +15,15 @@ db.once('open', function () {
   console.log('really, really connected')
 })
 
+const path = require('path')
+const methodOverride = require('method-override')
+const ejsLayouts = require('express-ejs-layouts')
+
+app.set('view engine', 'ejs')
+app.use(ejsLayouts)
+app.use(express.static(path.join(__dirname, '/public')))
+app.use(methodOverride('_method'))
+
 // setup body parser
 var bodyParser = require('body-parser')
 app.use(bodyParser.json())
