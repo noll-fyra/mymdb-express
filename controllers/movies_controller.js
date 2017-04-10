@@ -7,11 +7,14 @@ var Movie = require('../models/movie')
 
 // route for forms
 router.get('/movies/new', function (req, res) {
-  res.send('form to create new movies')
+  res.send('movies/create')
 })
 
-router.get('/movies/:id/edit', function (req, res) {
-  res.render(edit)
+router.get('/movies/:id/edit', function (req, res, next) {
+  Movie.findById(req.params.id, function (err, data) {
+    if (err) next()
+    res.render('movies/edit', { theMovie: data })
+  })
 })
 
 // route for /movies

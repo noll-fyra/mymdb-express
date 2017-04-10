@@ -3,6 +3,10 @@ var express = require('express')
 var app = express()
 var port = process.env.PORT || 4000
 
+const path = require('path')
+const methodOverride = require('method-override')
+const ejsLayouts = require('express-ejs-layouts')
+
 // mongoose setup
 var dbURI = process.env.PROD_MONGODB || 'mongodb://localhost:27017/mymdb'
 var mongoose = require('mongoose')
@@ -15,10 +19,6 @@ db.once('open', function () {
   console.log('really, really connected')
 })
 
-const path = require('path')
-const methodOverride = require('method-override')
-const ejsLayouts = require('express-ejs-layouts')
-
 app.set('view engine', 'ejs')
 app.use(ejsLayouts)
 app.use(express.static(path.join(__dirname, '/public')))
@@ -26,6 +26,7 @@ app.use(methodOverride('_method'))
 
 // setup body parser
 var bodyParser = require('body-parser')
+app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
 app.get('/', function (req, res) {

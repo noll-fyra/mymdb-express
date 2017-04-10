@@ -1,0 +1,9 @@
+<h1>Form to edit existing user
+    <%- theUser.id %></h1>
+
+<form action="/users/<%- theUser.id %>?_method=PUT" method="POST">
+    <input type="text" name="name" value="<%- theUser.name %>">
+    <input type="text" name="email" value="<%- theUser.email %>">
+    <input type="text" name="password" value="<%- theUser.password %>">
+    <button type="submit" value=<%- theUser.id %> name="id">Submit Changes</button>
+</form>
