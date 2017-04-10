@@ -1,7 +1,7 @@
 // express set up
 var express = require('express')
 var app = express()
-port = procss.env.port || 4000
+var port = process.env.port || 4000
 
 // mongoose setup
 var dbURI = 'mongodb://localhost/mymdb'
